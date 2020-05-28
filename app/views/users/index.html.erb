@@ -1,0 +1,49 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+	<div class="row">
+	    <div class="col-xs-3">
+			<p class="notice"><%= notice %></p>
+  			<%= render 'layouts/sidebar', user: @user, book: @new_book %>
+  		</div>
+
+	<div class="col-xs-9">
+		<h3>Users</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>image</th>
+						<th>name</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |user| %>
+						<tr>
+							<td>
+								<%= attachment_image_tag user, :profile_image, :fill, 40, 40, format:'jpeg',fallback: "no_image.jpg",size: '40' %>
+							</td>
+							<td>
+								<%= user.name %>
+							</td>
+							<td>
+								<%=link_to "Show", user_path(user) %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+	</div>
+
+	</div>
+</div>
+
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3 col-xs-offset-9">
+    			<p>CopyRight Infratop.inc</p>
+    		</div>
+    	</div>
+    </div>
+</footer>

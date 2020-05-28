@@ -1,0 +1,40 @@
+<div class="sidebar_fixed" >
+<h3>User info</h3>
+
+		<table class="table">
+    		<tr><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format:'jpeg',fallback: "no_image.jpg"%>
+    		</tr>
+          	<tr>
+            	<th>name</th><td><%= user.name %></td>
+            </tr>
+            <tr>
+            	<th>introduction</th><td><%= user.introduction %></td>
+          	</tr>
+		</table>
+
+	<div class="row">
+	    <%= link_to edit_user_path(user.id), :method => :get do %>
+	    	<span class="col-xs-12 btn btn-default glyphicon glyphicon-wrench" aria-hidden="true"></span>
+	    <% end %>
+	</div>
+
+
+
+<h3>New book</h3>
+    <%= form_for(book) do |f| %>
+      	<%= render 'layouts/error_messages', model: f.object %>
+
+    <div class="field row">
+        <label>Title</label>
+        	<%= f.text_field :title, class: 'col-xs-12' %>
+    </div>
+    <div class="field row" style="margin-bottom: 5px" >
+        <label>Opinion</label>
+        	<%= f.text_area :body, class: 'col-xs-12' %>
+    </div>
+	<div class="actions row">
+        	<%= f.submit 'Create Book', class: 'btn btn-primary col-xs-12' %>
+    </div>
+  	<% end %>
+
+</div>

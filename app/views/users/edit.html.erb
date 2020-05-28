@@ -1,0 +1,42 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+	<h2>User info</h2>
+
+<div class="user-edit">
+	<%= form_for(@user) do |f| %>
+		<%= render 'layouts/error_messages', model: f.object %>
+
+			<div class="field">
+				<label>Name</label>
+				<%= f.text_field :name %>
+			</div>
+
+			<div class="field" style="margin-bottom: 5px">
+				<label>Image</label>
+				<div class="user-edit-image">
+					<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format:'jpeg' %>
+				</div>
+				<%= f.attachment_field :profile_image %>
+			</div>
+
+			<div class="field">
+				<label>Introduction</label>
+				<%= f.text_area :introduction %>
+			</div>
+
+			<div class="center-block">
+				<%= f.submit 'Update User' %>
+			</div>
+	<% end %>
+</div>
+
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3 col-xs-offset-9">
+    			<p>CopyRight Infratop.inc</p>
+    		</div>
+    	</div>
+    </div>
+</footer>
