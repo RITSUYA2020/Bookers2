@@ -22,7 +22,7 @@
 
 <h3>New book</h3>
     <%= form_for(book) do |f| %>
-      	<%= render 'layouts/error_messages', model: f.object %>
+      	<%= render 'layouts/error_messages', model: f.object, book: @new_book %>
 
     <div class="field row">
         <label>Title</label>
