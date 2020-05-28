@@ -5,7 +5,7 @@
 
 <div class="user-edit">
 	<%= form_for(@user) do |f| %>
-		<%= render 'layouts/error_messages', model: f.object %>
+		<%= render 'layouts/error_messages', model: f.object, book: @user %>
 
 			<div class="field">
 				<label>Name</label>

@@ -3,15 +3,15 @@ class BooksController < ApplicationController
 before_action :ensure_current_user,{only: [:edit, :update, :destroy]}
 
 	def create
-  		@book = Book.new(book_params)
-  		@book.user_id = current_user.id
-  		if @book.save
+  		@new_book = Book.new(book_params)
+  		@new_book.user_id = current_user.id
+  		if @new_book.save
   			flash[:notice] = "You have creatad book successfully."
-  			redirect_to book_path(@book.id)
+  			redirect_to book_path(@new_book.id)
   		else
   			#indexページの表示処理
   			@books = Book.all
-  			@user = @book.user
+  			@user = @new_book.user
   			render :index
   		end
   	end
@@ -35,12 +35,13 @@ before_action :ensure_current_user,{only: [:edit, :update, :destroy]}
 
 	def update
 		@book = Book.find(params[:id])
+		@new_book = Book.new
 		if @book.update(book_params)
 			flash[:notice] = "Book was successfully created."
 			redirect_to book_path(@book.id)
 		else
 			@user = @book.user
-			render :show
+			render :edit
 		end
 	end
 
