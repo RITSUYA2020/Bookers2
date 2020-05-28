@@ -1,0 +1,41 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class="nav navbar-nav navbar-left">
+      <h3 style= "color: white" >Bookers</h3>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>
+                <%= link_to user_path(current_user.id), class: "my-bt" do %><span class="glyphicon glyphicon-home"></span> Home<% end %>
+            </li>
+            <li class="">
+              <%= link_to users_path, class: "my-bt" do %><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users<% end %>
+            </li>
+            <li class="">
+              <%= link_to books_path, class: "my-bt" do %><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Books<% end %>
+            </li>
+            <li class="">
+              <%= link_to destroy_user_session_path, method: :delete, class: "my-bt" do %><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> logout<% end %>
+            </li>
+          <% else %>
+            <li class="">
+              <%= link_to root_path, class: "my-bt" do %><span class="glyphicon glyphicon-home"></span> Home<% end %>
+            </li>
+            <li class="">
+              <%= link_to home_about_path, class: "my-bt" do %><span class="glyphicon glyphicon-link" aria-hidden="true"></span> About<% end %>
+            </li>
+            <li class="">
+              <%= link_to new_user_registration_path, class: "my-bt" do %><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> sign up<% end %>
+            </li>
+            <li class="">
+              <%= link_to new_user_session_path, class: "my-bt" do %><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> login<% end %>
+            </li>
+          <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div style="margin-bottom: 57px">
+</div>
